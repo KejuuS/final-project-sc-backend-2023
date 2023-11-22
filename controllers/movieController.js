@@ -78,17 +78,20 @@ export const updateMovie = async (req, res) => {
     try {
         const data = req.body;
         const movie = await movieModel.findById(req.params.id);
+
         if (movie) {
-            movie.judul = data.judul;
-            movie.sutradara = data.sutradara;
-            movie.produser = data.produser;
-            movie.tahunRilis = data.tahunRilis;
-            movie.sinopsis = data.sinopsis;
-            movie.genre = data.genre;
-            const updateMovie = await movie.save();
+            // Update only the fields that are present in the request body
+            for (const key in data) {
+                if (Object.hasOwnProperty.call(data, key)) {
+                    movie[key] = data[key];
+                }
+            }
+
+            const updatedMovie = await movie.save();
+
             return res.status(200).json({
                 message: "Success",
-                data: updateMovie,
+                data: updatedMovie,
             });
         } else {
             return res.status(404).json({ message: "Movie not found" });
@@ -97,6 +100,7 @@ export const updateMovie = async (req, res) => {
         return res.status(409).json({ message: error.message });
     }
 };
+
 
 /**
  *
