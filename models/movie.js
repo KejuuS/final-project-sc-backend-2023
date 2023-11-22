@@ -11,7 +11,7 @@ const movieSchema = mongoose.Schema(
         genre: String,
     },
     {
-        timeStamps: true,
+        timestamps: true,
     }
 );
 //mengambil nilai id yang di set otomatis oleh mongodb

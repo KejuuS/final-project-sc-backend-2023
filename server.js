@@ -11,7 +11,7 @@ app.use("/api", router);
 // Connect to MongoDB
 mongoose.set("strictQuery", false);
 mongoose
-    .connect(configDB.url)
+    .connect(configDB.url, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to MongoDB");
     })

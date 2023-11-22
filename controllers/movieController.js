@@ -32,7 +32,9 @@ export const getAllMovies = async (req, res) => {
 export const getMovieById = async (req, res) => {
     try {
         const movie = await movieModel.findById(req.params.id);
-        if (!movie) return res.status(404).json({ message: "Movie not found" });
+        if (!movie) {
+            return res.status(404).json({ message: "Movie not found" });
+        }
         return res.status(200).json({
             message: "Success",
             data: movie,
@@ -49,13 +51,15 @@ export const getMovieById = async (req, res) => {
  * @returns create new movie into database
  */
 export const createMovie = async (req, res) => {
-    const movie = req.body;
-    const newMovie = new movieModel(movie);
+    const movieData = req.body;
+
+    console.log("Incoming movie data:", movieData); // Add this line
     try {
-        await newMovie.save();
+        const newMovie = await movieModel.create(movieData);
+
         return res.status(201).json({
             message: "Success",
-            data: newMovie,
+            data: newMovie, // Remove the toObject transformation
         });
     } catch (error) {
         return res.status(409).json({
