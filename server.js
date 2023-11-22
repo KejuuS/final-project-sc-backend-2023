@@ -6,7 +6,7 @@ const app = express();
 
 //middleware
 app.use(express.json());
-app.use(router);
+app.use("/api", router);
 
 // Connect to MongoDB
 mongoose.set("strictQuery", false);
