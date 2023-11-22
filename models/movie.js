@@ -20,4 +20,4 @@ movieSchema.methods.toJSON = function () {
     object.id = _id;
     return object;
 };
-export const movieModel = mongoose.model("movieModel", bookSchema);
+export const movieModel = mongoose.model("movieModel", movieSchema);
