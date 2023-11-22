@@ -11,14 +11,14 @@ const router = express.Router();
 /**
  * buatlah route CRUD untuk model yang telah dibuat dan diolah controller
  */
-router.get("/", getAllMovies);
+router.get("/getAllMovie", getAllMovies);
 
-router.get("/movie/:id", getMovieById);
+router.get("/getMovieById/:id", getMovieById);
 
-router.post("/movie", createMovie);
+router.post("/createMovie", createMovie);
 
-router.put("/movie/:id", updateMovie);
+router.put("/updateMovie/:id", updateMovie);
 
-router.delete("/movie/:id", deleteMovie);
+router.delete("/deleteMovie/:id", deleteMovie);
 
 export default router;

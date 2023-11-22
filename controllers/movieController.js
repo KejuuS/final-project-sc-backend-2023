@@ -13,10 +13,10 @@ const movieModel = configModel.movie;
  */
 export const getAllMovies = async (req, res) => {
     try {
-        const movies = await movieModel.find();
+        const movie = await movieModel.find();
         return res.status(200).json({
             message: "Success",
-            data: movies,
+            data: movie,
         });
     } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -50,7 +50,7 @@ export const getMovieById = async (req, res) => {
  */
 export const createMovie = async (req, res) => {
     const movie = req.body;
-    const newMovie = new movieModel(book);
+    const newMovie = new movieModel(movie);
     try {
         await newMovie.save();
         return res.status(201).json({
@@ -73,7 +73,7 @@ export const createMovie = async (req, res) => {
 export const updateMovie = async (req, res) => {
     try {
         const data = req.body;
-        const Movie = await movieModelModel.findById(req.params.id);
+        const movie = await movieModel.findById(req.params.id);
         if (movie) {
             movie.judul = data.judul;
             movie.sutradara = data.sutradara;
