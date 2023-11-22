@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const bookSchema = mongoose.Schema(
+const movieSchema = mongoose.Schema(
     {
-        // example schema definition for a book
+        // example schema definition for a movie
         judul: String,
-        penulis: String,
-        penerbit: String,
-        tahun: Number,
+        sutradara: String,
+        produser: String,
+        tahunRilis: Number,
         sinopsis: String,
         genre: String,
     },
@@ -15,9 +15,9 @@ const bookSchema = mongoose.Schema(
     }
 );
 //mengambil nilai id yang di set otomatis oleh mongodb
-bookSchema.methods.toJSON = function () {
+movieSchema.methods.toJSON = function () {
     const { _id, ...object } = this.toObject();
     object.id = _id;
     return object;
 };
-export const bookModel = mongoose.model("bookModel", bookSchema);
+export const movieModel = mongoose.model("movieModel", bookSchema);

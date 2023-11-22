@@ -1,6 +1,6 @@
 import configDB from "../config/dbConfig.js";
 import mongoose from "mongoose";
-import { bookModel } from "./book.js";
+import { bookModel } from "./movie.js";
 
 /**
  * definisikan model yang akan digunakan (berguna ketika ada beberapa model)

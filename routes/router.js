@@ -1,24 +1,24 @@
 import express from "express";
 import {
-    createBook,
-    getAllBooks,
-    getBookById,
-    updateBook,
-    deleteBook,
-} from "../controllers/bookController.js";
+    createMovie,
+    getAllMovies,
+    getMovieById,
+    updateMovie,
+    deleteMovie,
+} from "../controllers/movieController.js";
 const router = express.Router();
 
 /**
  * buatlah route CRUD untuk model yang telah dibuat dan diolah controller
  */
-router.get("/books", getAllBooks);
+router.get("/", getAllMovies);
 
-router.get("/book/:id", getBookById);
+router.get("/movie/:id", getMovieById);
 
-router.post("/book", createBook);
+router.post("/movie", createMovie);
 
-router.put("/book/:id", updateBook);
+router.put("/movie/:id", updateMovie);
 
-router.delete("/book/:id", deleteBook);
+router.delete("/movie/:id", deleteMovie);
 
 export default router;
