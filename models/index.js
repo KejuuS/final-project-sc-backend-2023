@@ -1,6 +1,6 @@
 import configDB from "../config/dbConfig.js";
 import mongoose from "mongoose";
-import { bookModel } from "./movie.js";
+import { movieModel } from "./movie.js";
 
 /**
  * definisikan model yang akan digunakan (berguna ketika ada beberapa model)
@@ -8,7 +8,7 @@ import { bookModel } from "./movie.js";
 const configModel = {
     mongoose,
     url: configDB.url,
-    book: bookModel,
+    movie: movieModel,
 };
 
 export default configModel;
