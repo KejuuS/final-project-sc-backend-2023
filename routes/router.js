@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 /**
- * buatlah route CRUD untuk model yang telah dibuat dan diolah controller
+ * Route CRUD untuk model yang telah dibuat dan diolah controller
  */
 router.get("/getAllMovie", getAllMovies);
 

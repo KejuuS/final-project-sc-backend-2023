@@ -2,14 +2,14 @@ import configModel from "../models/index.js";
 const movieModel = configModel.movie;
 
 /**
- * buatlah controller CRUD untuk model yang telah dibuat
+ * Controller CRUD untuk model yang telah dibuat
  */
 
 /**
- *
+ * Mendapatkan semua film dalam database
  * @param {*} req
  * @param {*} res
- * @returns get All movies in database
+ * @returns
  */
 export const getAllMovies = async (req, res) => {
     try {
@@ -19,47 +19,52 @@ export const getAllMovies = async (req, res) => {
             data: movie,
         });
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({
+            message: error.message
+        });
     }
 };
 
 /**
- *
+ * Mendapatkan film spesifik berdasarkan ID
  * @param {*} req
  * @param {*} res
- * @returns get spesific movie by id
+ * @returns
  */
 export const getMovieById = async (req, res) => {
     try {
         const movie = await movieModel.findById(req.params.id);
         if (!movie) {
-            return res.status(404).json({ message: "Movie not found" });
-        }
-        return res.status(200).json({
+            return res.status(404).json({
+                message: "Movie not found"
+            });
+        } return res.status(200).json({
             message: "Success",
             data: movie,
         });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        res.status(500).json({
+            message: error.message
+        });
     }
 };
 
 /**
- *
+ * Membuat film baru dalam database
  * @param {*} req
  * @param {*} res
- * @returns create new movie into database
+ * @returns
  */
 export const createMovie = async (req, res) => {
     const movieData = req.body;
 
-    console.log("Incoming movie data:", movieData); // Add this line
+    console.log("Incoming movie data:", movieData);
     try {
         const newMovie = await movieModel.create(movieData);
 
         return res.status(201).json({
             message: "Success",
-            data: newMovie, // Remove the toObject transformation
+            data: newMovie,
         });
     } catch (error) {
         return res.status(409).json({
@@ -69,10 +74,10 @@ export const createMovie = async (req, res) => {
 };
 
 /**
- *
+ * Mengupdate film berdasarkan ID
  * @param {*} req
  * @param {*} res
- * @returns update specific movie by ID
+ * @returns
  */
 export const updateMovie = async (req, res) => {
     try {
@@ -103,10 +108,10 @@ export const updateMovie = async (req, res) => {
 
 
 /**
- *
+ * Menghapus film berdasarkan ID
  * @param {*} req
  * @param {*} res
- * @returns delete specific Movie by ID
+ * @returns
  */
 export const deleteMovie = async (req, res) => {
     try {

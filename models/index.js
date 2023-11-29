@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { movieModel } from "./movie.js";
 
 /**
- * definisikan model yang akan digunakan (berguna ketika ada beberapa model)
+ * Mendefinisikan model yang akan digunakan
  */
 const configModel = {
     mongoose,
