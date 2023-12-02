@@ -15,7 +15,7 @@ const movieSchema = mongoose.Schema(
 );
 // Mengambil nilai id yang di set otomatis oleh mongodb
 movieSchema.methods.toJSON = function () {
-    const { _id, ...object } = this.toObject();
+    const { __v, _id, ...object } = this.toObject();
     object.id = _id;
     return object;
 };
